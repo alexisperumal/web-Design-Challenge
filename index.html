@@ -8,6 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     
+    <link rel="stylesheet" href="style.css">
     <!--
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="styles.css">
@@ -53,34 +54,104 @@
 
     <header class="header">
       <h1>Weather Analysis</h1>
+      <P>Alexis Perumal, 2/15/20</P>
     </header>
-    <main>
-      <section class="posts">
-        <article class="post">
-          <h3>Ut nulla exercitation ad eu et amet nisi dolor.</h3>
-          <p>Nisi quis consectetur excepteur cillum dolor minim. Reprehenderit do qui veniam dolor in ea cupidatat eiusmod ad adipisicing nulla officia dolor sit. Anim fugiat eu enim in ex est deserunt laborum commodo incididunt consectetur consectetur.
-            Ullamco nulla nulla cillum elit reprehenderit officia magna excepteur. Fugiat occaecat veniam eu amet veniam tempor fugiat magna exercitation amet veniam mollit pariatur. Minim adipisicing cupidatat est do est id ex reprehenderit quis enim
-            elit consectetur sint.
-          </p>
-        </article>
-        <article class="post">
-          <h3>Ut nulla exercitation ad eu et amet nisi dolor.</h3>
-          <p>Nisi quis consectetur excepteur cillum dolor minim. Reprehenderit do qui veniam dolor in ea cupidatat eiusmod ad adipisicing nulla officia dolor sit. Anim fugiat eu enim in ex est deserunt laborum commodo incididunt consectetur consectetur.
-            Ullamco nulla nulla cillum elit reprehenderit officia magna excepteur. Fugiat occaecat veniam eu amet veniam tempor fugiat magna exercitation amet veniam mollit pariatur. Minim adipisicing cupidatat est do est id ex reprehenderit quis enim
-            elit consectetur sint.
-          </p>
-        </article>
-        <article class="post">
-          <h3>Ut nulla exercitation ad eu et amet nisi dolor.</h3>
-          <p>Nisi quis consectetur excepteur cillum dolor minim. Reprehenderit do qui veniam dolor in ea cupidatat eiusmod ad adipisicing nulla officia dolor sit. Anim fugiat eu enim in ex est deserunt laborum commodo incididunt consectetur consectetur.
-            Ullamco nulla nulla cillum elit reprehenderit officia magna excepteur. Fugiat occaecat veniam eu amet veniam tempor fugiat magna exercitation amet veniam mollit pariatur. Minim adipisicing cupidatat est do est id ex reprehenderit quis enim
-            elit consectetur sint.
-          </p>
-        </article>
-      </section>
-    </main>
-  </div>
+
+    <!--Normally these medium columns go full wide on small screen sizes-->
+    <div class="row">
+      <div class="col-md-8">
+        <H3>Summary</H3>
+        <P>
+          Analysis attempting to understand the correlation between latitude and four weather indicators (temperature, Humidity, Cloudiness and Windspeed).  
+        </P>
+
+
+        <H3>Approach</H3>
+        <P>
+          Analysis was done by hitting the OpenWeather API REST endpoint and extracting real time weather data for 500+ cities randomly selected from around the world.  
+        </P>
+
+        <h3>Findings</h3>
+        <oL>
+          <li>
+            <h5>Temperature correlates inversely with latitude with statistical significance.</h5>
+            <P>
+              Statistical significance is very strong p=9.8E-113 and the inverse correlation is also strong
+              (r=-0.77, m=-0.42 degrees C per degree of latitude).
+            </P>
+            <P>
+              Statistical significance is even stronger, p=3.7E-157 and the inverse correlation stronger
+              (r=-0.84, m=-0.77 degrees C per degree of latitude).
+            </P>
+            <P>
+              Using the absolute value of latitude is preferred because we would expect temperatures to be
+              colder closer to the poles. With fewer cities in the southern hemisphere, as evidenced by no
+              datapoints at a latitude < -60, the more numerous norther cities may have enabled a linear
+              regression line to still be statistically significant.
+            </P>
+          </li>
+
+          <li>
+            <h5>Humidity and Cloudiness correlate positively with latitude, with statistical significance
+              for 12/28/19.</h5>
+            <P>
+              This finding wasn’t quite as obvious and although this was demonstrated for the sample date
+              presented, 12/28/19, it did not hold true for all dates explored. To have greater confidence
+              in this finding would require datasets across several dates spread across the year. Also, notice
+              that although this was statistically significant, the impact was slight for both weather
+              indicators (absolute value latitudes and non-absolute value latitudes).
+            </P>
+          </li>
+
+          <li>
+            <h5>Wind speed had statistically significant correlation with latitude (absolute value)
+              on 12/28/19.</h5>
+            <P>
+              No statistical significance was seen with raw latitude, but when applied to latitude absolute 
+              ues, p=2.2E-04. It does seem intuitive that there would be more extreme weather, hence greater
+              wind, toward the poles.
+            </P>
+          </li>
+
   
+        </oL>
+
+        <h3>Recommendations</h3>
+        <oL>
+          <li>
+            To gain a robust understanding requires a more detailed analysis: accounting for curvature of the earth with the application of transforms, looking at sample dates across the year, separate analysis for the northern and southern hemispheres.
+          </li>
+          <li>
+            Recommend creation of a regression model that evaluates for other factors including time of day, hemisphere (northern or southern), distance to the coast, etc.
+          </li>  
+        </oL>
+
+
+
+      </div>
+      <div class="col-md-4">
+        <H3>Visualizations</H3>
+        <h5>Temperature Vs. Latitude</h5>
+        <img src="Figures/Fig1-1_Temp_v_Lat.png" alt="Figure 1-1: Temp v. Latitude" width="300">
+        <img src="Figures/Fig1-2_Temp_v_Lat-abs.png" alt="Figure 1-2: Temp v. Latitude abs" width="300">
+        <hr>
+        <h5>Humidity Vs. Latitude</h5>
+        <img src="Figures/Fig2-1_Humidity_v_Lat.png" alt="Figure 2-1: Humidity v. Latitude" width="300">
+        <img src="Figures/Fig2-2_Humidity_v_Lat-abs.png" alt="Figure 2-2: Humidity v. Latitude abs" width="300">
+        <hr>
+        <h5>Cloudiness Vs. Latitude</h5>
+        <img src="Figures/Fig2-3_Cloudiness_v_Lat.png" alt="Figure 2-3: Humidity v. Latitude" width="300">
+        <img src="Figures/Fig2-4_Cloudiness_v_Lat-abs.png" alt="Figure 2-4: Humidity v. Latitude abs" width="300">
+        <hr>
+        <h5>Windspeed Vs. Latitude</h5>
+        <img src="Figures/Fig3-1_Windspeed_v_Lat.png" alt="Figure 3-1: Windspeed v. Latitude" width="300">
+        <img src="Figures/Fig3-2_Windspeed_v_Lat-abs.png" alt="Figure 3-2: Windspeed v. Latitude abs" width="300">
+
+      </div>
+
+    </div>
+  </div>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
