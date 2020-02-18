@@ -53,94 +53,89 @@
     </nav>
 
     <header class="header">
-      <h1>Cloudiness</h1>
+      <h1>Weather Analysis</h1>
+      <P>Alexis Perumal, 2/15/20</P>
     </header>
 
     <!--Normally these medium columns go full wide on small screen sizes-->
     <div class="row">
       <div class="col-md-8">
-        <h3>Analysis Results</h3>
-        <div class="row">
-          <div class="col-md-6">
-            <img src="Figures/Fig2-3_Cloudiness_v_Lat.png" alt="Figure 2-3: Humidity v. Latitude" class="img-fluid">
-          </div>
-          <div class="col-md-6">
-            <img src="Figures/Fig2-4_Cloudiness_v_Lat-abs.png" alt="Figure 2-4: Humidity v. Latitude abs" class="img-fluid">
-          </div>
-        </div>
-
-        <h5>Cloudiness correlates positively with latitude, with statistical significance
-          for 12/28/19.</h5>
+        <H3>Summary</H3>
         <P>
-          This finding wasn’t quite as obvious as temperature and although this was demonstrated for the sample date
-          presented, 12/28/19, it did not hold true for all dates explored. To have greater confidence
-          in this finding would require datasets across several dates spread across the year. Also, notice
-          that although this was statistically significant, the impact was slight for both weather
-          indicators (absolute value latitudes and non-absolute value latitudes).
+          Analysis attempting to understand the correlation between latitude and four weather indicators: max temperature, humidity, cloudiness and wind speed.  
         </P>
-      </div>
 
+
+        <H3>Approach</H3>
+        <P>
+          Analysis was done by hitting the OpenWeather API REST endpoint and extracting real time weather data for 500+ cities randomly selected from around the world.  
+        </P>
+
+        <h3>Findings</h3>
+        <ol>
+          <li>
+            <a href="viz1.html">
+            <h5>Temperature correlates inversely with latitude with statistical significance on 12/28/19.</h5>
+            </a>
+          </li>
+
+          <li>
+            <h5><a href="viz2.html">Humidity</a> and <a href="viz3.html">Cloudiness</a> correlate positively with latitude, with statistical significance
+              on 12/28/19.</h5>
+          </li>
+
+          <li>
+            <a href="viz1.html">
+            <h5>Wind speed had statistically significant correlation with latitude (absolute value)
+              on 12/28/19.</h5>
+            </a>
+          </li>
+        </ol>
+
+        <h3>Recommendations</h3>
+        <oL>
+          <li>
+            To gain a robust understanding requires a more detailed analysis: accounting for curvature of the earth with the application of transforms, looking at sample dates across the year, separate analysis for the northern and southern hemispheres.
+          </li>
+          <li>
+            Recommend creation of a regression model that evaluates for other factors including time of day, hemisphere (northern or southern), distance to the coast, etc.
+          </li>
+        </oL>
+
+      </div>
       <div class="col-md-4">
         <H3><a href="comparisons.html">Visualizations</a></H3>
-
         <h5>Temperature Vs. Latitude</h5>
-        <div class="row">
-          <div class="col-md-6">
-            <a href="viz1.html">
-              <img src="Figures/Fig1-1_Temp_v_Lat.png" alt="Figure 1-1: Temp v. Latitude" width="300" class="img-fluid">
-            </a>
-          </div>
-          <div class="col-md-6">
-            <a href="viz1.html">
-              <img src="Figures/Fig1-2_Temp_v_Lat-abs.png" alt="Figure 1-2: Temp v. Latitude abs" width="300" class="img-fluid">
-            </a>
-          </div>
-        </div>
-
+        <a href="viz1.html">
+          <img src="Figures/Fig1-1_Temp_v_Lat.png" alt="Figure 1-1: Temp v. Latitude" width="300" class="img-fluid">
+        </a>
+        <a href="viz1.html">
+        <img src="Figures/Fig1-2_Temp_v_Lat-abs.png" alt="Figure 1-2: Temp v. Latitude abs" width="300" class="img-fluid">
+        </a>
         <hr>
         <h5>Humidity Vs. Latitude</h5>
-        <div class="row">
-          <div class="col-md-6">
-            <a href="viz2.html">
-            <img src="Figures/Fig2-1_Humidity_v_Lat.png" alt="Figure 2-1: Humidity v. Latitude" width="300" class="img-fluid">
-            </a>
-          </div>
-          <div class="col-md-6">
-            <a href="viz2.html">
-            <img src="Figures/Fig2-2_Humidity_v_Lat-abs.png" alt="Figure 2-2: Humidity v. Latitude abs" width="300" class="img-fluid">
-            </a>
-          </div>
-        </div>
-
+        <a href="viz2.html">
+        <img src="Figures/Fig2-1_Humidity_v_Lat.png" alt="Figure 2-1: Humidity v. Latitude" width="300" class="img-fluid">
+        </a>
+        <a href="viz2.html">
+        <img src="Figures/Fig2-2_Humidity_v_Lat-abs.png" alt="Figure 2-2: Humidity v. Latitude abs" width="300" class="img-fluid">
+        </a>
         <hr>
         <h5>Cloudiness Vs. Latitude</h5>
-        <div class="row">
-          <div class="col-md-6">
-            <a href="viz3.html">
-            <img src="Figures/Fig2-3_Cloudiness_v_Lat.png" alt="Figure 2-3: Humidity v. Latitude" width="300" class="img-fluid">
-            </a>
-          </div>
-          <div class="col-md-6">
-            <a href="viz3.html">
-            <img src="Figures/Fig2-4_Cloudiness_v_Lat-abs.png" alt="Figure 2-4: Humidity v. Latitude abs" width="300" class="img-fluid">
-            </a>
-          </div>
-        </div>
-
+        <a href="viz3.html">
+        <img src="Figures/Fig2-3_Cloudiness_v_Lat.png" alt="Figure 2-3: Humidity v. Latitude" width="300" class="img-fluid">
+        </a>
+        <a href="viz3.html">
+        <img src="Figures/Fig2-4_Cloudiness_v_Lat-abs.png" alt="Figure 2-4: Humidity v. Latitude abs" width="300" class="img-fluid">
+        </a>
         <hr>
         <h5>Windspeed Vs. Latitude</h5>
-        <div class="row">
-          <div class="col-md-6">
-            <a href="viz4.html">
-            <img src="Figures/Fig3-1_Windspeed_v_Lat.png" alt="Figure 3-1: Windspeed v. Latitude" width="300" class="img-fluid">
-            </a>
-          </div>
-          <div class="col-md-6">
-            <a href="viz4.html">
-            <img src="Figures/Fig3-2_Windspeed_v_Lat-abs.png" alt="Figure 3-2: Windspeed v. Latitude abs" width="300" class="img-fluid">
-            </a>
-          </div>
-        </div>
+        <a href="viz4.html">
+        <img src="Figures/Fig3-1_Windspeed_v_Lat.png" alt="Figure 3-1: Windspeed v. Latitude" width="300" class="img-fluid">
+        </a>
+        <a href="viz4.html">
+        <img src="Figures/Fig3-2_Windspeed_v_Lat-abs.png" alt="Figure 3-2: Windspeed v. Latitude abs" width="300" class="img-fluid">
+        </a>
       </div>
     </div>
   </div>
